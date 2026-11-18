@@ -1,22 +1,29 @@
 /* =========================================================
    La Brasa – link da bio
+   Paleta tirada do logo: preto, laranja e creme.
    Cores e medidas principais ficam nas variáveis abaixo.
    ========================================================= */
 :root {
-  --carvao: #1A1614;      /* fundo */
-  --cartao: #26201D;      /* cartões */
-  --cartao-2: #2F2723;    /* cartão mais claro (hover, chips) */
-  --linha: #3A302B;       /* bordas */
-  --brasa: #C8261E;       /* vermelho-brasa: botão principal */
-  --brasa-escuro: #A51D17;
-  --fogo: #F07A1A;        /* laranja-fogo: ícones e detalhes */
-  --creme: #F5EDE3;       /* texto principal */
-  --texto-2: #B9AEA3;     /* texto secundário */
+  --preto: #0E0B09;        /* fundo da página */
+  --cartao: #1B1511;       /* cartões escuros (tom madeira do escudo) */
+  --cartao-2: #251C16;     /* hover */
+  --linha: #33271F;        /* bordas */
+
+  --laranja: #F25A0A;      /* laranja da faixa do logo: botão principal */
+  --laranja-2: #E36511;    /* laranja mais suave (degradê) */
+  --laranja-icone: #F47A2A;/* ícones e destaques sobre o preto */
+  --laranja-escuro: #B23A0A; /* laranja para texto sobre o creme */
+
+  --creme: #FCEBD2;        /* texto principal / cartão claro */
+  --dourado: #F4C475;      /* creme dourado das letras do logo: títulos */
+  --texto-2: #C2B19D;      /* texto secundário sobre o preto */
+  --marrom: #2A1A10;       /* texto sobre o creme e sobre o laranja */
+  --marrom-2: #6B4F3A;     /* texto secundário sobre o creme */
   --whats: #25D366;
 
   --raio: 14px;
   --raio-lg: 16px;
-  --sombra: 0 6px 18px rgba(0, 0, 0, .28);
+  --sombra: 0 6px 18px rgba(0, 0, 0, .4);
   --titulo: "Bebas Neue", "Oswald", Impact, "Arial Narrow", sans-serif;
   --texto: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
@@ -28,11 +35,9 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--carvao);
-  /* brilho quente bem sutil no topo, como brasa */
-  background-image:
-    radial-gradient(120% 60% at 50% -12%, rgba(240, 122, 26, .16), transparent 60%),
-    radial-gradient(80% 40% at 50% -5%, rgba(200, 38, 30, .14), transparent 70%);
+  background-color: var(--preto);
+  /* brilho laranja bem sutil atrás do logo */
+  background-image: radial-gradient(110% 55% at 50% -10%, rgba(242, 90, 10, .2), transparent 62%);
   background-repeat: no-repeat;
   color: var(--creme);
   font-family: var(--texto);
@@ -73,7 +78,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .logo img {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 8px 22px rgba(200, 38, 30, .35));
+  filter: drop-shadow(0 8px 22px rgba(242, 90, 10, .28));
 }
 /* O logo já traz o nome: o título "La Brasa" fica só para leitores de tela.
    Se o logo não carregar, o título volta a aparecer. */
@@ -93,8 +98,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(140deg, var(--brasa), var(--fogo));
-  box-shadow: 0 0 0 3px var(--carvao), 0 0 0 5px rgba(240, 122, 26, .55), 0 8px 26px rgba(200, 38, 30, .35);
+  background: linear-gradient(140deg, var(--laranja), var(--laranja-2));
+  box-shadow: 0 0 0 3px var(--preto), 0 0 0 5px var(--dourado), 0 8px 26px rgba(242, 90, 10, .35);
 }
 .logo--fallback .logo__fallback {
   display: block;
@@ -115,6 +120,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   line-height: 1;
   letter-spacing: .04em;
   text-transform: uppercase;
+  color: var(--dourado);
   margin-top: 4px;
 }
 .hero__line {
@@ -124,7 +130,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .hero__slogan {
   font-size: 16px;
   font-weight: 600;
-  color: var(--fogo);
+  color: var(--dourado);
 }
 
 /* "Aberto agora" */
@@ -171,7 +177,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   transition: transform .12s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
 }
 .btn:active { transform: scale(.985); }
-.btn:focus-visible { outline: 3px solid var(--fogo); outline-offset: 3px; }
+.btn:focus-visible { outline: 3px solid var(--dourado); outline-offset: 3px; }
 
 .btn__icon { width: 26px; height: 26px; flex: 0 0 auto; }
 .btn__arrow { width: 20px; height: 20px; flex: 0 0 auto; margin-left: auto; opacity: .75; }
@@ -179,22 +185,22 @@ ul { list-style: none; margin: 0; padding: 0; }
 .btn__label small {
   font-size: 14px;
   font-weight: 500;
-  opacity: .9;
   margin-top: 2px;
 }
 
-/* Botão principal: vermelho-brasa com degradê sutil para o laranja e brilho alaranjado */
+/* Botão principal: laranja do logo, texto escuro (contraste alto) e leve brilho */
 .btn--primary {
   min-height: 72px;
   font-size: 20px;
-  background: linear-gradient(100deg, var(--brasa) 0%, var(--brasa) 45%, #D4401C 80%, #DC4E1B 100%);
-  box-shadow: 0 8px 24px rgba(200, 38, 30, .38), 0 0 0 1px rgba(240, 122, 26, .35) inset, 0 0 28px rgba(240, 122, 26, .22);
-  color: #FFF8F0;
+  color: var(--marrom);
+  background: linear-gradient(100deg, var(--laranja) 0%, var(--laranja) 50%, var(--laranja-2) 100%);
+  box-shadow: 0 8px 24px rgba(242, 90, 10, .32), 0 0 0 1px rgba(244, 196, 117, .45) inset, 0 0 28px rgba(242, 90, 10, .2);
 }
 .btn--primary .btn__icon { width: 30px; height: 30px; }
-.btn--primary .btn__label small { color: #FFE9D6; opacity: 1; }
+.btn--primary .btn__arrow { opacity: .9; }
+.btn--primary .btn__label small { color: var(--marrom); font-weight: 600; opacity: .85; }
 @media (hover: hover) {
-  .btn--primary:hover { box-shadow: 0 10px 30px rgba(200, 38, 30, .5), 0 0 0 1px rgba(240, 122, 26, .5) inset, 0 0 36px rgba(240, 122, 26, .3); }
+  .btn--primary:hover { box-shadow: 0 10px 30px rgba(242, 90, 10, .45), 0 0 0 1px rgba(244, 196, 117, .6) inset, 0 0 36px rgba(242, 90, 10, .3); }
 }
 
 .btn--whats {
@@ -204,15 +210,15 @@ ul { list-style: none; margin: 0; padding: 0; }
   box-shadow: var(--sombra);
 }
 .btn--whats .btn__icon { color: var(--whats); width: 28px; height: 28px; }
-.btn--whats .btn__label small { color: var(--texto-2); opacity: 1; }
+.btn--whats .btn__label small { color: var(--texto-2); }
 
 .btn--outline {
   margin-top: 4px;
   justify-content: flex-start;
-  border: 1.5px solid var(--fogo);
-  background: rgba(240, 122, 26, .06);
+  border: 1.5px solid var(--laranja-icone);
+  background: rgba(242, 90, 10, .07);
 }
-.btn--outline .btn__icon { color: var(--fogo); }
+.btn--outline .btn__icon { color: var(--laranja-icone); }
 
 .btn--ghost {
   justify-content: center;
@@ -221,11 +227,11 @@ ul { list-style: none; margin: 0; padding: 0; }
   font-size: 17px;
   font-weight: 600;
 }
-.btn--ghost .btn__icon { width: 22px; height: 22px; color: var(--fogo); }
+.btn--ghost .btn__icon { width: 22px; height: 22px; color: var(--laranja-icone); }
 
 @media (hover: hover) {
-  .btn--whats:hover, .btn--ghost:hover { background: var(--cartao-2); border-color: #4A3E37; }
-  .btn--outline:hover { background: rgba(240, 122, 26, .12); }
+  .btn--whats:hover, .btn--ghost:hover { background: var(--cartao-2); border-color: #46362A; }
+  .btn--outline:hover { background: rgba(242, 90, 10, .14); }
 }
 
 /* ---------- Cartões ---------- */
@@ -244,6 +250,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: .03em;
   text-transform: uppercase;
   text-wrap: balance;
+  color: var(--dourado);
 }
 .card__lead {
   margin-top: 6px;
@@ -260,9 +267,19 @@ ul { list-style: none; margin: 0; padding: 0; }
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--fogo);
+  color: var(--laranja-icone);
 }
 .eyebrow svg { width: 16px; height: 16px; }
+
+/* Cartão do buffet em creme (como as letras do logo) */
+.buffet {
+  background: var(--creme);
+  border-color: #EBD3B0;
+  color: var(--marrom);
+}
+.buffet .card__title { color: var(--marrom); }
+.buffet .card__lead { color: var(--marrom-2); }
+.buffet .eyebrow { color: var(--laranja-escuro); }
 
 /* Pratos do buffet */
 .dishes {
@@ -281,30 +298,25 @@ ul { list-style: none; margin: 0; padding: 0; }
   margin-top: 3px;
   font-size: 14px;
   line-height: 1.4;
-  color: var(--texto-2);
+  color: var(--marrom-2);
 }
 .dish__photo {
   aspect-ratio: 4 / 3;
   border-radius: 12px;
   overflow: hidden;
-  background: var(--cartao-2);
+  background: #E9D4B4;
+  box-shadow: 0 4px 12px rgba(42, 26, 16, .18);
 }
 .dish__photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Fundo decorativo quando a foto ainda não existe em /assets/ */
-.dish__photo.is-empty { position: relative; }
+/* Fundo decorativo quando a foto não existe em /assets/ */
+.dish__photo.is-empty { position: relative; background: linear-gradient(160deg, #2A1D15, #140E0B); }
 .dish__photo.is-empty::after {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(60% 70% at 50% 110%, rgba(240, 122, 26, .55), transparent 70%),
-    radial-gradient(50% 50% at 50% 115%, rgba(200, 38, 30, .7), transparent 70%);
+  background: radial-gradient(60% 70% at 50% 115%, rgba(242, 90, 10, .65), transparent 70%);
 }
-.dish__photo--1.is-empty { background: linear-gradient(160deg, #2D2522, #1F1A18); }
-.dish__photo--2.is-empty { background: linear-gradient(160deg, #3A2618, #221915); }
-.dish__photo--3.is-empty { background: linear-gradient(160deg, #3A1F1B, #211816); }
-.dish__photo--4.is-empty { background: linear-gradient(160deg, #2B2A1E, #1E1A16); }
 
 .perks {
   margin-top: 18px;
@@ -315,17 +327,17 @@ ul { list-style: none; margin: 0; padding: 0; }
 .perks li {
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(240, 122, 26, .1);
-  border: 1px solid rgba(240, 122, 26, .3);
+  background: rgba(242, 90, 10, .1);
+  border: 1px solid rgba(178, 58, 10, .35);
   font-size: 14px;
   font-weight: 600;
-  color: var(--creme);
+  color: var(--marrom);
 }
 
 /* Endereço e horário */
 .info { margin: 14px 0 14px; display: flex; flex-direction: column; gap: 14px; }
 .info li { display: flex; gap: 12px; align-items: flex-start; }
-.info__icon { width: 22px; height: 22px; color: var(--fogo); flex: 0 0 auto; margin-top: 2px; }
+.info__icon { width: 22px; height: 22px; color: var(--laranja-icone); flex: 0 0 auto; margin-top: 2px; }
 .info strong { display: block; font-weight: 600; font-size: 17px; line-height: 1.35; }
 .info span { display: block; color: var(--texto-2); font-size: 15px; }
 
@@ -349,7 +361,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   font-size: 28px;
   letter-spacing: .05em;
   text-transform: uppercase;
-  color: var(--creme);
+  color: var(--dourado);
   line-height: 1.1;
 }
 .footer__copy { margin-top: 8px; font-size: 13px; }
